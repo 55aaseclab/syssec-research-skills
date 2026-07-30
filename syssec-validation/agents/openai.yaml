@@ -1,0 +1,6 @@
+interface:
+  display_name: "SysSec Validation"
+  short_description: "Reproduce and validate system security claims"
+  default_prompt: >
+    Use $syssec-validation to reproduce prior work, design experiments,
+    collect results, and state limits without overstating evidence.

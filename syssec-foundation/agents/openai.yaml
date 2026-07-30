@@ -1,0 +1,7 @@
+interface:
+  display_name: "SysSec Foundation"
+  short_description: "Frame, scope, and ground a research effort"
+  default_prompt: >
+    Use $syssec-foundation to clarify the research question, threat model,
+    prior work, baselines, and available artifacts before implementation or
+    evaluation.

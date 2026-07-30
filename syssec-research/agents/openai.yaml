@@ -1,0 +1,7 @@
+interface:
+  display_name: "SysSec Research"
+  short_description: "Route full-lifecycle system security research work"
+  default_prompt: >
+    Use $syssec-research to identify the current research stage, pick the
+    right system security workflow, and route the work to the correct
+    supervisor.

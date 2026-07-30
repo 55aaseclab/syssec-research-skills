@@ -1,0 +1,8 @@
+interface:
+  display_name: "SysSec Publication"
+  short_description: >
+    Turn validated research into papers and disclosure artifacts
+  default_prompt: >
+    Use $syssec-publication to align claims to evidence, draft the paper,
+    prepare submission materials, and handle rebuttal or disclosure
+    responsibly.

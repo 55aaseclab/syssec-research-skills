@@ -1,0 +1,7 @@
+interface:
+  display_name: "SysSec Investigation"
+  short_description: "Analyze targets and build methods or prototypes"
+  default_prompt: >
+    Use $syssec-investigation to understand the target system, inspect
+    artifacts, and build an attack or defense method without skipping
+    evidence or safety boundaries.
