@@ -11,9 +11,15 @@ description: >
 
 `syssec-validation` turns methods and claims into measured results.
 
+> **Version**: `v0.1.1`
+
 ## Load first
 
 Load the `_system/` protocol layer through `../_system/`.
+
+Then consult:
+
+- `references/evaluation-discipline.md`
 
 ## Route here when
 

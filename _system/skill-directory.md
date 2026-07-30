@@ -22,6 +22,7 @@
 ## Investigation workers
 
 - `syssec-target-understanding`
+- `syssec-method-design`
 - `syssec-reverse`
 - `syssec-static-analysis`
 - `syssec-dynamic-analysis`
@@ -49,3 +50,4 @@
 - `syssec-rebuttal`
 - `syssec-disclosure`
 - `syssec-artifact-eval`
+- `syssec-post-submission`

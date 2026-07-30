@@ -13,6 +13,8 @@ description: >
 where the work is in the lifecycle, what workflow fits, and which Supervisor
 should move the work forward.
 
+> **Version**: `v0.1.1`
+
 ## Load first
 
 Before doing visible work, load:
@@ -26,6 +28,10 @@ Before doing visible work, load:
 - `../_system/handoff-contract.md`
 - `../_system/workflow-catalog.md`
 - `../_system/skill-directory.md`
+
+Then consult:
+
+- `references/stage-router.md`
 
 ## Responsibilities
 

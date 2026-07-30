@@ -8,7 +8,7 @@
 论文写作，到投稿、rebuttal、artifact evaluation、披露与后续维护，整条链
 路都在覆盖范围内。
 
-**最新版本：v0.1.0**
+**最新版本：v0.1.1**
 
 **定位**：全生命周期系统安全科研编排系统
 
@@ -22,6 +22,18 @@
 ---
 
 ## 更新日志
+
+### v0.1.1（2026-07-30）
+
+- **补齐正式版本化**：新增 `VERSION`、`CHANGELOG.md` 与 git tag 发布节奏
+- **补齐缺失阶段**：新增 `syssec-method-design` 与
+  `syssec-post-submission`
+- **补齐缺失模板**：把 research artifacts、评估 notes、写作 notes、披
+  露 notes 和 post-submission notes 的模板补齐
+- **补齐参考层与示例**：为 Hub、Supervisors 和关键阶段新增
+  `references/`，并增加 root `examples/`
+- **清理悬空引用**：关闭 README、workflow、Supervisor 中提到但仓库里不存
+  在的文件或阶段缺口
 
 ### v0.1.0（2026-07-30）
 
@@ -37,6 +49,16 @@
 
 ---
 
+## 版本化
+
+这套系统从 `v0.1.1` 开始正式版本化：
+
+- 当前版本以 `VERSION` 为准
+- 人类可读变更记录在 `CHANGELOG.md`
+- 发布节点通过 git tag 固化
+
+---
+
 ## 系统架构
 
 SysSec Research Skills 不是一堆散装研究 prompt，它是一个三层架构的系统
@@ -49,8 +71,9 @@ L1  Supervisors   ├── syssec-foundation ───── 研究基建中枢
                   │     └─ intake / scope / survey / baseline / artifact-intake
                   │
                   ├── syssec-investigation ── 技术调查中枢
-                  │     └─ target-understanding / reverse / static /
-                  │        dynamic / fuzzing / exploit / defense-prototype
+                  │     └─ target-understanding / method-design / reverse /
+                  │        static / dynamic / fuzzing / exploit /
+                  │        defense-prototype
                   │
                   ├── syssec-validation ───── 验证与评估中枢
                   │     └─ reproduction / experiment-design / evaluation /
@@ -59,7 +82,8 @@ L1  Supervisors   ├── syssec-foundation ───── 研究基建中枢
                   │
 L2  Workers       └── syssec-publication ──── 论文与披露中枢
                         └─ synthesis / write / related-work / figures /
-                           submission / rebuttal / disclosure / artifact-eval
+                           submission / rebuttal / disclosure /
+                           artifact-eval / post-submission
 ```
 
 ### 三层是什么意思？
@@ -68,7 +92,7 @@ L2  Workers       └── syssec-publication ──── 论文与披露中�
 |:---|:---|:---|
 | **L0 Hub** | `syssec-research` | 系统入口。识别当前研究阶段，选择工作流，路由到对应 Supervisor。 |
 | **L1 Supervisor** | 4 个中枢 | 二级路由。接住 Hub 分下来的阶段任务，再派给具体 Worker，负责协同与回收结果。 |
-| **L2 Worker** | 27 个执行引擎 | 干活的。每个 Worker 只解决一个明确研究问题，不混阶段，不越权扩写结论。 |
+| **L2 Worker** | 29 个执行引擎 | 干活的。每个 Worker 只解决一个明确研究问题，不混阶段，不越权扩写结论。 |
 
 **关键规则**：Hub 不直接替代 Worker，Worker 不直接跨组乱跳。研究阶段切换
 必须通过显式 handoff 完成。
@@ -98,6 +122,7 @@ L2  Workers       └── syssec-publication ──── 论文与披露中�
 | Worker | 做什么 |
 |:---|:---|
 | `syssec-target-understanding` | 目标系统理解。梳理架构、信任边界、攻击面、观测点 |
+| `syssec-method-design` | 方法设计。把 threat model、目标系统理解和预期 claim 收束成可实现、可评估的方法方案 |
 | `syssec-reverse` | 逆向分析。面向 binary、firmware、closed component 恢复结构和关键行为 |
 | `syssec-static-analysis` | 静态分析。检查源码、配置、调用路径、边界检查、权限变化 |
 | `syssec-dynamic-analysis` | 动态分析。用 trace、instrumentation、debugger 观察真实运行行为 |
@@ -129,6 +154,7 @@ L2  Workers       └── syssec-publication ──── 论文与披露中�
 | `syssec-rebuttal` | rebuttal 编排。把 reviewer comment 映射到证据、补实验、修文 |
 | `syssec-disclosure` | 负责任披露。控制公开边界、受影响版本、沟通时序 |
 | `syssec-artifact-eval` | artifact evaluation。准备外部 reviewer 可重放的包和 replay checklist |
+| `syssec-post-submission` | 投稿后维护。处理 camera-ready、artifact follow-up、release hygiene、后续维护承诺 |
 
 ---
 
@@ -162,6 +188,7 @@ L2  Workers       └── syssec-publication ──── 论文与披露中�
 | 意图信号 | Worker |
 |:---|:---|
 | 先弄清系统架构和攻击面 | `syssec-target-understanding` |
+| 先把方法和 proof obligation 设计清楚 | `syssec-method-design` |
 | 没源码，要啃 binary 或 firmware | `syssec-reverse` |
 | 有源码，先看静态逻辑 | `syssec-static-analysis` |
 | 需要 runtime 证据 | `syssec-dynamic-analysis` |
@@ -193,6 +220,7 @@ L2  Workers       └── syssec-publication ──── 论文与披露中�
 | 回 reviewer | `syssec-rebuttal` |
 | 管披露边界 | `syssec-disclosure` |
 | 准备 artifact eval | `syssec-artifact-eval` |
+| 处理 camera-ready 和后续维护 | `syssec-post-submission` |
 
 ### 预设工作流
 
@@ -262,13 +290,22 @@ SysSec Research Skills 内置 6 个预设工作流，覆盖系统安全科研中
 | `artifact-inventory.md` | 记录代码、binary、dataset、trace、依赖、缺失项 |
 | `reproduction-log.md` | 记录复现步骤、环境、偏差和未验证 claim |
 | `system-notes.md` | 记录架构、组件、信任边界、攻击面 |
+| `attack-surface-map.md` | 记录入口、边界、关键接口、可观察点 |
+| `method-design.md` | 记录方法机制、proof obligation、实验绑定关系 |
+| `prototype-notes.md` | 记录 PoC 或 defense prototype 的实现边界与失败尝试 |
 | `experiment-matrix.md` | 记录变量、指标、baseline、trial 设计 |
 | `findings-log.md` | 记录观察、证据等级、后续动作 |
 | `results-summary.md` | 汇总实验结果和异常 |
+| `performance-notes.md` | 记录 overhead、tail behavior、扩展性和资源成本 |
+| `compatibility-notes.md` | 记录平台支持、部署边界和不兼容点 |
+| `validity-notes.md` | 记录 internal / external / construct / measurement 风险 |
 | `claim-evidence-map.md` | 把 claim 和证据源一一绑定 |
 | `paper-outline.md` | 组织论文结构和章节骨架 |
+| `figures-plan.md` | 记录图表、表格、caption 和所服务的 claim |
 | `submission-checklist.md` | 检查稿件、artifact、伦理和格式 |
+| `rebuttal-notes.md` | 记录 reviewer 问题、响应策略和补实验计划 |
 | `disclosure-log.md` | 记录披露边界、版本、沟通时序 |
+| `post-submission-notes.md` | 记录 camera-ready、artifact follow-up 和维护动作 |
 
 对应模板放在 `templates/`。
 
@@ -289,6 +326,17 @@ SysSec Research Skills 内置 6 个预设工作流，覆盖系统安全科研中
 | `handoff-contract.md` | 统一 DONE / NEEDS_CONTEXT / BLOCKED / OUT_OF_SCOPE 回交 |
 | `workflow-catalog.md` | 预设工作流目录 |
 | `skill-directory.md` | 全部 skill 的职责映射 |
+
+---
+
+## 参考层与示例
+
+除了协议层，这套系统还补了两层辅助内容：
+
+- `references/`
+  放 Hub、Supervisors 和关键阶段的工作参考与 checklist
+- `examples/`
+  放常见研究路径的最小示例，帮助快速进入正确工作流
 
 ---
 

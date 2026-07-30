@@ -12,9 +12,15 @@ description: >
 `syssec-publication` converts validated work into publication and disclosure
 artifacts.
 
+> **Version**: `v0.1.1`
+
 ## Load first
 
 Load the `_system/` protocol layer through `../_system/`.
+
+Then consult:
+
+- `references/publication-bounds.md`
 
 ## Route here when
 
@@ -23,6 +29,7 @@ Load the `_system/` protocol layer through `../_system/`.
 - figures or tables need narrative support
 - a submission package needs checking
 - disclosure, rebuttal, or artifact evaluation is active
+- camera-ready or post-submission maintenance is active
 
 ## Workers
 
@@ -36,6 +43,7 @@ Load the `_system/` protocol layer through `../_system/`.
 | answer review feedback | `syssec-rebuttal` |
 | manage responsible disclosure | `syssec-disclosure` |
 | prepare artifact evaluation package | `syssec-artifact-eval` |
+| handle camera-ready and follow-up maintenance | `syssec-post-submission` |
 
 ## Standard outputs
 
@@ -45,6 +53,7 @@ Load the `_system/` protocol layer through `../_system/`.
 - `submission-checklist.md`
 - `rebuttal-notes.md`
 - `disclosure-log.md`
+- `post-submission-notes.md`
 
 ## Boundaries
 

@@ -11,13 +11,20 @@ description: >
 
 `syssec-investigation` owns the technical middle of the research lifecycle.
 
+> **Version**: `v0.1.1`
+
 ## Load first
 
 Load the `_system/` protocol layer through `../_system/`.
 
+Then consult:
+
+- `references/investigation-modes.md`
+
 ## Route here when
 
 - the target system must be understood
+- the method shape must be designed before prototyping
 - code or binaries need analysis
 - an attack path or defense needs implementation
 - fuzzing or dynamic observation is required
@@ -27,6 +34,7 @@ Load the `_system/` protocol layer through `../_system/`.
 | Need | Worker |
 |---|---|
 | understand architecture and attack surface | `syssec-target-understanding` |
+| turn the scoped question into a concrete method design | `syssec-method-design` |
 | reverse binaries or closed components | `syssec-reverse` |
 | inspect source statically | `syssec-static-analysis` |
 | observe runtime behavior | `syssec-dynamic-analysis` |

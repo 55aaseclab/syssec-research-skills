@@ -11,9 +11,15 @@ description: >
 
 `syssec-foundation` is the framing and evidence-base Supervisor.
 
+> **Version**: `v0.1.1`
+
 ## Load first
 
 Load the `_system/` protocol layer through `../_system/`.
+
+Then consult:
+
+- `references/foundation-deliverables.md`
 
 ## Route here when
 
