@@ -56,6 +56,7 @@ Then consult:
 |---|---|
 | "I have an idea" | `idea-to-paper` |
 | "Reproduce this paper" | `paper-reproduction` |
+| "Review the literature on this topic" | `literature-review` |
 | "Study attacks on this system" | `system-attack-study` |
 | "Design a defense" | `defense-design-study` |
 | "Measure or compare systems" | `measurement-study` |

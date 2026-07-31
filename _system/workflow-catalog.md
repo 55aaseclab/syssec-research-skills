@@ -22,6 +22,17 @@ intake → survey → artifact-intake → reproduction →
 experiment-design → evaluation → threats-validity → writing
 ```
 
+## `literature-review`
+
+Use when the goal is to survey a topic, map related work, compare assumptions,
+and produce a literature-grounded synthesis without claiming local
+reproduction.
+
+```text
+intake → scope → survey → baseline → synthesis →
+related-work → write → submission
+```
+
 ## `system-attack-study`
 
 Use when the goal is to analyze a system, identify an attack path, build a

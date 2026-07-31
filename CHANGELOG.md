@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.2 (2026-07-31)
+
+- Added the `literature-review` preset workflow for topic surveys, related-work
+  mapping, and evidence-bound literature synthesis.
+- Updated the Hub triggers and README workflow tables to route literature
+  review requests directly.
+- Added a dedicated `examples/literature-review.md` entry.
+
 ## v0.1.1 (2026-07-30)
 
 - Added formal versioning via `VERSION`, `CHANGELOG.md`, and git tags.

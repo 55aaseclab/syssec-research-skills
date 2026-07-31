@@ -8,7 +8,7 @@
 论文写作，到投稿、rebuttal、artifact evaluation、披露与后续维护，整条链
 路都在覆盖范围内。
 
-**最新版本：v0.1.1**
+**最新版本：v0.1.2**
 
 **定位**：全生命周期系统安全科研编排系统
 
@@ -22,6 +22,14 @@
 ---
 
 ## 更新日志
+
+### v0.1.2（2026-07-31）
+
+- **新增 literature-review workflow**：把“做某个方向的文献综述/相关工作
+  梳理”从 `paper-reproduction` 里分离出来，作为独立主路径
+- **更新 Hub 路由触发器**：让 literature review 类型请求可以直接命中预
+  设 workflow
+- **补示例入口**：新增 `examples/literature-review.md`
 
 ### v0.1.1（2026-07-30）
 
@@ -43,9 +51,9 @@
 - **覆盖完整生命周期**：从 intake 一直到 post-submission 阶段
 - **补齐核心模板**：research brief、threat model、artifact inventory、
   reproduction log、experiment matrix、claim-evidence map 等
-- **预设 6 条研究工作流**：覆盖 idea-to-paper、paper-reproduction、
-  system-attack-study、defense-design-study、measurement-study、
-  vuln-to-disclosure
+- **预设 7 条研究工作流**：覆盖 idea-to-paper、paper-reproduction、
+  literature-review、system-attack-study、defense-design-study、
+  measurement-study、vuln-to-disclosure
 
 ---
 
@@ -224,17 +232,18 @@ L2  Workers       └── syssec-publication ──── 论文与披露中�
 
 ### 预设工作流
 
-SysSec Research Skills 内置 6 个预设工作流，覆盖系统安全科研中最常见
+SysSec Research Skills 内置 7 个预设工作流，覆盖系统安全科研中最常见
 的主路径：
 
 | # | 工作流 | 适用场景 | 执行链路 |
 |:--|:---|:---|:---|
 | 1 | **idea-to-paper** | 从研究想法一路做到投稿 | intake → scope → survey → baseline → artifact-intake → method-design → prototype → evaluation → synthesis → writing → submission |
 | 2 | **paper-reproduction** | 手上有论文，目标是复现和偏差审计 | intake → survey → artifact-intake → reproduction → experiment-design → evaluation → threats-validity → writing |
-| 3 | **system-attack-study** | 对一个系统做攻击面分析、PoC、评估、写作 | intake → scope → target-understanding → reverse/static → dynamic/fuzzing → exploit → evaluation → synthesis → writing → disclosure |
-| 4 | **defense-design-study** | 设计并实现一个 defense，再评估安全性与代价 | intake → scope → survey → baseline → target-understanding → method-design → defense-prototype → evaluation → performance → compatibility → threats-validity → writing |
-| 5 | **measurement-study** | 做系统安全测量、分类、趋势或对比研究 | intake → scope → survey → baseline → artifact-intake → experiment-design → evaluation → statistics → synthesis → writing |
-| 6 | **vuln-to-disclosure** | 从发现问题一路走到验证、披露与发表边界控制 | intake → scope → target-understanding → static/dynamic → reproduction → exploit/defense → evaluation → disclosure → writing |
+| 3 | **literature-review** | 做某个方向的系统安全文献综述、related work map、综述型写作 | intake → scope → survey → baseline → synthesis → related-work → write → submission |
+| 4 | **system-attack-study** | 对一个系统做攻击面分析、PoC、评估、写作 | intake → scope → target-understanding → reverse/static → dynamic/fuzzing → exploit → evaluation → synthesis → writing → disclosure |
+| 5 | **defense-design-study** | 设计并实现一个 defense，再评估安全性与代价 | intake → scope → survey → baseline → target-understanding → method-design → defense-prototype → evaluation → performance → compatibility → threats-validity → writing |
+| 6 | **measurement-study** | 做系统安全测量、分类、趋势或对比研究 | intake → scope → survey → baseline → artifact-intake → experiment-design → evaluation → statistics → synthesis → writing |
+| 7 | **vuln-to-disclosure** | 从发现问题一路走到验证、披露与发表边界控制 | intake → scope → target-understanding → static/dynamic → reproduction → exploit/defense → evaluation → disclosure → writing |
 
 ### 常见路径
 
