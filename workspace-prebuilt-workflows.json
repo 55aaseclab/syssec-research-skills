@@ -1,0 +1,193 @@
+{
+  "schema": "wanghai.workspace-prebuilt-workflows",
+  "schema_version": 1,
+  "workspace_types": [
+    "research"
+  ],
+  "workflows": [
+    {
+      "id": "idea-to-paper",
+      "title": "idea-to-paper",
+      "scenario": "从想法开始",
+      "summary": "用于从研究想法、目标领域或开放问题推进到论文提交。",
+      "chain": [
+        "intake",
+        "scope",
+        "survey",
+        "baseline",
+        "artifact-intake",
+        "method-design",
+        "prototype",
+        "evaluation",
+        "synthesis",
+        "writing",
+        "submission",
+        "post-submission"
+      ],
+      "todos": [
+        "明确问题与 scope",
+        "完成 survey 与 baseline",
+        "准备 artifact 与方法设计",
+        "实现与评估",
+        "完成写作与投稿"
+      ],
+      "icon": "rocket"
+    },
+    {
+      "id": "paper-reproduction",
+      "title": "paper-reproduction",
+      "scenario": "已有论文，要复现或审计",
+      "summary": "用于论文复现、审计实验链路和整理有效性威胁。",
+      "chain": [
+        "intake",
+        "survey",
+        "artifact-intake",
+        "reproduction",
+        "experiment-design",
+        "evaluation",
+        "threats-validity",
+        "writing"
+      ],
+      "todos": [
+        "读论文并整理目标",
+        "准备 artifact",
+        "建立复现实验",
+        "做 evaluation",
+        "补 threats-validity 和写作"
+      ],
+      "icon": "scroll-text"
+    },
+    {
+      "id": "literature-review",
+      "title": "literature-review",
+      "scenario": "做某个方向的文献综述",
+      "summary": "用于 topic survey、related work map、假设与边界对比，以及综述型写作。",
+      "chain": [
+        "intake",
+        "scope",
+        "survey",
+        "baseline",
+        "synthesis",
+        "related-work",
+        "write",
+        "submission"
+      ],
+      "todos": [
+        "收敛综述问题与边界",
+        "系统梳理 related work",
+        "提炼 baseline 与比较维度",
+        "形成 synthesis 和 related-work 结构",
+        "输出综述型写作"
+      ],
+      "icon": "search"
+    },
+    {
+      "id": "system-attack-study",
+      "title": "system-attack-study",
+      "scenario": "研究系统攻击路径",
+      "summary": "用于分析目标系统、构建攻击路径、做 PoC 和评估。",
+      "chain": [
+        "intake",
+        "scope",
+        "target-understanding",
+        "reverse or static-analysis",
+        "dynamic-analysis or fuzzing",
+        "exploit",
+        "evaluation",
+        "synthesis",
+        "writing",
+        "disclosure"
+      ],
+      "todos": [
+        "理解目标与授权边界",
+        "做静态或逆向分析",
+        "补动态分析或 fuzzing",
+        "验证 exploit",
+        "评估并形成 disclosure 材料"
+      ],
+      "icon": "shield-alert"
+    },
+    {
+      "id": "defense-design-study",
+      "title": "defense-design-study",
+      "scenario": "设计并验证防御",
+      "summary": "用于从 baseline 到 defense prototype，再到性能、兼容性和投稿。",
+      "chain": [
+        "intake",
+        "scope",
+        "survey",
+        "baseline",
+        "target-understanding",
+        "method-design",
+        "defense-prototype",
+        "evaluation",
+        "performance",
+        "compatibility",
+        "threats-validity",
+        "writing",
+        "submission"
+      ],
+      "todos": [
+        "完成 survey 和 baseline",
+        "理解目标系统",
+        "设计并实现 defense",
+        "评估性能与兼容性",
+        "整理 threats-validity 与投稿"
+      ],
+      "icon": "key"
+    },
+    {
+      "id": "measurement-study",
+      "title": "measurement-study",
+      "scenario": "做大规模测量或对比",
+      "summary": "用于 characterization、comparison 和 trend analysis 类研究。",
+      "chain": [
+        "intake",
+        "scope",
+        "survey",
+        "baseline",
+        "artifact-intake",
+        "experiment-design",
+        "evaluation",
+        "statistics",
+        "synthesis",
+        "writing",
+        "submission"
+      ],
+      "todos": [
+        "定义样本与 scope",
+        "准备 artifacts",
+        "设计实验与 evaluation",
+        "完成统计分析",
+        "整理 synthesis 和论文"
+      ],
+      "icon": "globe-2"
+    },
+    {
+      "id": "vuln-to-disclosure",
+      "title": "vuln-to-disclosure",
+      "scenario": "疑似漏洞到正式披露",
+      "summary": "用于对潜在漏洞做验证、复现、评估和纪律化披露。",
+      "chain": [
+        "intake",
+        "scope",
+        "target-understanding",
+        "static-analysis or dynamic-analysis",
+        "reproduction",
+        "exploit or defense-prototype",
+        "evaluation",
+        "disclosure",
+        "writing",
+        "post-submission"
+      ],
+      "todos": [
+        "确认漏洞边界",
+        "完成复现",
+        "准备 exploit 或 defense prototype",
+        "整理评估证据",
+        "完成 disclosure 与写作"
+      ],
+      "icon": "wrench"
+    }
+  ]
+}

@@ -8,7 +8,7 @@
 论文写作，到投稿、rebuttal、artifact evaluation、披露与后续维护，整条链
 路都在覆盖范围内。
 
-**最新版本：v0.1.2**
+**最新版本：v0.1.3**
 
 **定位**：全生命周期系统安全科研编排系统
 
@@ -22,6 +22,14 @@
 ---
 
 ## 更新日志
+
+### v0.1.3（2026-07-31）
+
+- **新增 workspace homepage workflow schema**：提供
+  `workspace-prebuilt-workflows.json`，让 research workspace 首页可自动加
+  载这套预置工作流
+- **把 literature-review 纳入 homepage 预置工作流**：不再只存在于文档
+  和 workflow catalog
 
 ### v0.1.2（2026-07-31）
 

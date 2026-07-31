@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.3 (2026-07-31)
+
+- Added `workspace-prebuilt-workflows.json` so research workspace home pages
+  can auto-load preset workflows from this package.
+- Added `literature-review` to the workspace-home preset workflow manifest.
+
 ## v0.1.2 (2026-07-31)
 
 - Added the `literature-review` preset workflow for topic surveys, related-work
