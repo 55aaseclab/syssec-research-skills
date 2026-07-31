@@ -1,369 +1,386 @@
 # SysSec Research Skills
 
-这是一套面向系统安全研究的全生命周期 Skill 系统。不是把几篇论文、几条命
-令、几个模板散着堆在一起，而是把系统安全科研拆成可路由、可交接、可复现、
-可审计的研究操作系统。
+[English](README.md) | [简体中文](README.zh-CN.md)
 
-从选题、文献、artifact intake、复现、系统分析、攻击或防御原型、实验评估、
-论文写作，到投稿、rebuttal、artifact evaluation、披露与后续维护，整条链
-路都在覆盖范围内。
+This is a full-lifecycle Skill system for systems security research. It is not
+just a loose pile of papers, commands, and templates. It turns systems
+security research into an operational system that can be routed, handed off,
+reproduced, and audited.
 
-**最新版本：v0.1.3**
+It covers the full chain from topic selection, literature, artifact intake,
+reproduction, system analysis, attack or defense prototyping, experimental
+evaluation, and paper writing, through submission, rebuttal, artifact
+evaluation, disclosure, and follow-up maintenance.
 
-**定位**：全生命周期系统安全科研编排系统
+**Latest version: v0.1.3**
 
-**当前原则**：
+**Positioning**: a full-lifecycle orchestration system for systems security
+research
 
-- 不预设具体项目、实验室、会议或工具链
-- 不把猜测写成结论
-- 不把一次跑通写成可复现
-- 不把论文 claim 当作本地验证结果
+**Core principles**:
+
+- Do not assume a specific project, lab, venue, or toolchain
+- Do not write guesses as conclusions
+- Do not treat one successful run as reproducibility
+- Do not treat paper claims as locally verified results
 
 ---
 
-## 更新日志
+## Changelog
 
-### v0.1.3（2026-07-31）
+### v0.1.3 (2026-07-31)
 
-- **新增 workspace homepage workflow schema**：提供
-  `workspace-prebuilt-workflows.json`，让 research workspace 首页可自动加
-  载这套预置工作流
-- **把 literature-review 纳入 homepage 预置工作流**：不再只存在于文档
-  和 workflow catalog
+- **Added workspace homepage workflow schema**: provides
+  `workspace-prebuilt-workflows.json` so the research workspace homepage can
+  auto-load this set of prebuilt workflows
+- **Added literature-review to homepage prebuilt workflows**: it no longer
+  exists only in docs and the workflow catalog
 
-### v0.1.2（2026-07-31）
+### v0.1.2 (2026-07-31)
 
-- **新增 literature-review workflow**：把“做某个方向的文献综述/相关工作
-  梳理”从 `paper-reproduction` 里分离出来，作为独立主路径
-- **更新 Hub 路由触发器**：让 literature review 类型请求可以直接命中预
-  设 workflow
-- **补示例入口**：新增 `examples/literature-review.md`
+- **Added the literature-review workflow**: splits literature reviews and
+  related-work mapping out from `paper-reproduction` into a dedicated primary
+  path
+- **Updated Hub routing triggers**: literature review requests can now hit a
+  prebuilt workflow directly
+- **Added an example entry**: new `examples/literature-review.md`
 
-### v0.1.1（2026-07-30）
+### v0.1.1 (2026-07-30)
 
-- **补齐正式版本化**：新增 `VERSION`、`CHANGELOG.md` 与 git tag 发布节奏
-- **补齐缺失阶段**：新增 `syssec-method-design` 与
+- **Added formal versioning**: introduced `VERSION`, `CHANGELOG.md`, and a git
+  tag based release cadence
+- **Filled missing stages**: added `syssec-method-design` and
   `syssec-post-submission`
-- **补齐缺失模板**：把 research artifacts、评估 notes、写作 notes、披
-  露 notes 和 post-submission notes 的模板补齐
-- **补齐参考层与示例**：为 Hub、Supervisors 和关键阶段新增
-  `references/`，并增加 root `examples/`
-- **清理悬空引用**：关闭 README、workflow、Supervisor 中提到但仓库里不存
-  在的文件或阶段缺口
+- **Filled missing templates**: completed templates for research artifacts,
+  evaluation notes, writing notes, disclosure notes, and post-submission notes
+- **Filled the reference layer and examples**: added `references/` for the
+  Hub, Supervisors, and key stages, plus root `examples/`
+- **Removed dangling references**: closed README, workflow, and Supervisor
+  references to files or stages that did not actually exist in the repo
 
-### v0.1.0（2026-07-30）
+### v0.1.0 (2026-07-30)
 
-- **初始化系统架构**：建立 `1 Hub + 4 Supervisor + 27 Worker` 的三层结构
-- **建立协议层**：补齐 preamble、证据规则、复现规则、伦理与披露、降级规
-  则、输出格式、handoff 契约、工作流目录、skill 目录
-- **覆盖完整生命周期**：从 intake 一直到 post-submission 阶段
-- **补齐核心模板**：research brief、threat model、artifact inventory、
-  reproduction log、experiment matrix、claim-evidence map 等
-- **预设 7 条研究工作流**：覆盖 idea-to-paper、paper-reproduction、
-  literature-review、system-attack-study、defense-design-study、
-  measurement-study、vuln-to-disclosure
-
----
-
-## 版本化
-
-这套系统从 `v0.1.1` 开始正式版本化：
-
-- 当前版本以 `VERSION` 为准
-- 人类可读变更记录在 `CHANGELOG.md`
-- 发布节点通过 git tag 固化
+- **Initialized the system architecture**: established a three-layer structure
+  with `1 Hub + 4 Supervisor + 27 Worker`
+- **Built the protocol layer**: added preamble, evidence rules,
+  reproducibility rules, ethics and disclosure, degradation rules, output
+  format, handoff contract, workflow catalog, and skill directory
+- **Covered the full lifecycle**: from intake all the way to the
+  post-submission stage
+- **Added core templates**: research brief, threat model, artifact inventory,
+  reproduction log, experiment matrix, claim-evidence map, and more
+- **Shipped 7 prebuilt research workflows**: covering idea-to-paper,
+  paper-reproduction, literature-review, system-attack-study,
+  defense-design-study, measurement-study, and vuln-to-disclosure
 
 ---
 
-## 系统架构
+## Versioning
 
-SysSec Research Skills 不是一堆散装研究 prompt，它是一个三层架构的系统
-安全科研编排系统：
+This system has been formally versioned since `v0.1.1`:
+
+- The current version is defined by `VERSION`
+- Human-readable changes are tracked in `CHANGELOG.md`
+- Release points are fixed through git tags
+
+---
+
+## System Architecture
+
+SysSec Research Skills is not a bag of disconnected research prompts. It is a
+three-layer orchestration system for systems security research:
 
 ```text
-L0  Hub          syssec-research ───── 系统入口 · 一级路由 · 工作流编排
+L0  Hub          syssec-research ───── system entry · top-level routing ·
+                                      workflow orchestration
                   │
-L1  Supervisors   ├── syssec-foundation ───── 研究基建中枢
+L1  Supervisors   ├── syssec-foundation ───── research foundation hub
                   │     └─ intake / scope / survey / baseline / artifact-intake
                   │
-                  ├── syssec-investigation ── 技术调查中枢
+                  ├── syssec-investigation ── technical investigation hub
                   │     └─ target-understanding / method-design / reverse /
                   │        static / dynamic / fuzzing / exploit /
                   │        defense-prototype
                   │
-                  ├── syssec-validation ───── 验证与评估中枢
+                  ├── syssec-validation ───── validation and evaluation hub
                   │     └─ reproduction / experiment-design / evaluation /
                   │        performance / compatibility / statistics /
                   │        threats-validity
                   │
-L2  Workers       └── syssec-publication ──── 论文与披露中枢
+L2  Workers       └── syssec-publication ──── writing and disclosure hub
                         └─ synthesis / write / related-work / figures /
                            submission / rebuttal / disclosure /
                            artifact-eval / post-submission
 ```
 
-### 三层是什么意思？
+### What do the three layers mean?
 
-| 层级 | 角色 | 做什么 |
+| Layer | Role | Purpose |
 |:---|:---|:---|
-| **L0 Hub** | `syssec-research` | 系统入口。识别当前研究阶段，选择工作流，路由到对应 Supervisor。 |
-| **L1 Supervisor** | 4 个中枢 | 二级路由。接住 Hub 分下来的阶段任务，再派给具体 Worker，负责协同与回收结果。 |
-| **L2 Worker** | 29 个执行引擎 | 干活的。每个 Worker 只解决一个明确研究问题，不混阶段，不越权扩写结论。 |
+| **L0 Hub** | `syssec-research` | System entry point. Identifies the current research stage, selects a workflow, and routes to the right Supervisor. |
+| **L1 Supervisor** | 4 hubs | Secondary routing. Takes stage tasks from the Hub, dispatches them to the right Worker, coordinates execution, and collects results. |
+| **L2 Worker** | 29 execution engines | The actual executors. Each Worker solves one clear research problem only. It does not mix stages or overstate conclusions. |
 
-**关键规则**：Hub 不直接替代 Worker，Worker 不直接跨组乱跳。研究阶段切换
-必须通过显式 handoff 完成。
-
----
-
-## 工具箱
-
-### 🔀 Hub（系统入口）
-
-| 模块 | 做什么 |
-|:---|:---|
-| `syssec-research` | 主入口，负责阶段识别、工作流选择、Supervisor 路由、长期研究状态维护 |
-
-### 🏗️ syssec-foundation — 研究基建中枢
-
-| Worker | 做什么 |
-|:---|:---|
-| `syssec-intake` | 研究 intake。把模糊请求整理成 research brief、study type、deliverable |
-| `syssec-scope` | 问题定义与 threat model。明确研究问题、假设、边界、成功标准 |
-| `syssec-survey` | 相关工作梳理。分组已有工作、提炼比较维度、识别 gap |
-| `syssec-baseline` | baseline 纪律。定义哪些系统、方法、设置必须比较，以及为什么比较公平 |
-| `syssec-artifact-intake` | artifact 清点。整理代码、二进制、数据集、trace、环境依赖、缺失项 |
-
-### 🔬 syssec-investigation — 技术调查中枢
-
-| Worker | 做什么 |
-|:---|:---|
-| `syssec-target-understanding` | 目标系统理解。梳理架构、信任边界、攻击面、观测点 |
-| `syssec-method-design` | 方法设计。把 threat model、目标系统理解和预期 claim 收束成可实现、可评估的方法方案 |
-| `syssec-reverse` | 逆向分析。面向 binary、firmware、closed component 恢复结构和关键行为 |
-| `syssec-static-analysis` | 静态分析。检查源码、配置、调用路径、边界检查、权限变化 |
-| `syssec-dynamic-analysis` | 动态分析。用 trace、instrumentation、debugger 观察真实运行行为 |
-| `syssec-fuzzing` | 模糊测试。设计 harness、oracle、seed、triage 路线 |
-| `syssec-exploit` | PoC/利用验证。判断怀疑点是否真的可达、可触发、可造成影响 |
-| `syssec-defense-prototype` | 防御原型。实现或约束化设计一个可被验证的防护机制 |
-
-### 📏 syssec-validation — 验证与评估中枢
-
-| Worker | 做什么 |
-|:---|:---|
-| `syssec-reproduction` | 复现已有工作。记录 exact/partial reproduction 状态和偏差原因 |
-| `syssec-experiment-design` | 实验设计。明确变量、指标、baseline、trial、输出路径 |
-| `syssec-evaluation` | 执行评估。跑实验矩阵、汇总原始结果、记录异常与失败 |
-| `syssec-performance` | 性能评估。量化 overhead、tail behavior、资源成本和扩展性 |
-| `syssec-compatibility` | 兼容性评估。检查 OS、版本、架构、部署模式的适配边界 |
-| `syssec-statistics` | 统计解释。处理 variance、significance、underpowered comparison |
-| `syssec-threats-validity` | 有效性威胁。梳理 internal / external / construct / measurement 风险 |
-
-### 📝 syssec-publication — 论文与披露中枢
-
-| Worker | 做什么 |
-|:---|:---|
-| `syssec-synthesis` | claim 收敛。把结果整理成带证据等级的 claim-evidence map |
-| `syssec-write` | 论文写作。围绕已验证 claim 组织章节，而不是围绕愿望清单写故事 |
-| `syssec-related-work` | 相关工作章节。把 survey 转成技术定位而不是 citation dump |
-| `syssec-figures` | 图表规划。让每张图或表都服务一个明确 claim |
-| `syssec-submission` | 投稿检查。检查稿件、附录、artifact、伦理和格式完整性 |
-| `syssec-rebuttal` | rebuttal 编排。把 reviewer comment 映射到证据、补实验、修文 |
-| `syssec-disclosure` | 负责任披露。控制公开边界、受影响版本、沟通时序 |
-| `syssec-artifact-eval` | artifact evaluation。准备外部 reviewer 可重放的包和 replay checklist |
-| `syssec-post-submission` | 投稿后维护。处理 camera-ready、artifact follow-up、release hygiene、后续维护承诺 |
+**Key rule**: the Hub does not replace Workers, and Workers do not jump across
+groups arbitrarily. Stage transitions must happen through explicit handoff.
 
 ---
 
-## 工具路径图
+## Toolbox
 
-### 路由逻辑
+### 🔀 Hub (system entry)
 
-#### 一级路由（Hub → Supervisor）
-
-| 用户意图 | 路由到 |
+| Module | Purpose |
 |:---|:---|
-| 还没想清楚问题、要定 threat model、要梳理文献、要列 baseline、要盘 artifact | `syssec-foundation` |
-| 要看系统架构、逆向、静态分析、动态分析、fuzz、做 PoC、做 defense prototype | `syssec-investigation` |
-| 要复现、设计实验、跑评估、看性能、做兼容性、做统计、写 threats to validity | `syssec-validation` |
-| 要收敛 claim、写论文、做图、准备投稿、写 rebuttal、处理 disclosure 或 artifact eval | `syssec-publication` |
+| `syssec-research` | Main entry point responsible for stage identification, workflow selection, Supervisor routing, and long-running research state maintenance |
 
-#### 二级路由（Supervisor → Worker）
+### 🏗️ syssec-foundation - research foundation hub
 
-**syssec-foundation →**
-
-| 意图信号 | Worker |
+| Worker | Purpose |
 |:---|:---|
-| 需求还很散、目标和交付不清楚 | `syssec-intake` |
-| 研究问题、威胁模型、假设、边界 | `syssec-scope` |
-| 相关工作、gap、相邻论文 | `syssec-survey` |
-| baseline 选择、公平比较 | `syssec-baseline` |
-| code / binary / dataset / trace / artifact 清点 | `syssec-artifact-intake` |
+| `syssec-intake` | Research intake. Turns a vague request into a research brief, study type, and deliverable. |
+| `syssec-scope` | Problem definition and threat model. Clarifies the research question, assumptions, boundaries, and success criteria. |
+| `syssec-survey` | Related work review. Groups prior work, extracts comparison dimensions, and identifies gaps. |
+| `syssec-baseline` | Baseline discipline. Defines which systems, methods, and settings must be compared, and why the comparison is fair. |
+| `syssec-artifact-intake` | Artifact inventory. Organizes code, binaries, datasets, traces, environment dependencies, and missing pieces. |
 
-**syssec-investigation →**
+### 🔬 syssec-investigation - technical investigation hub
 
-| 意图信号 | Worker |
+| Worker | Purpose |
 |:---|:---|
-| 先弄清系统架构和攻击面 | `syssec-target-understanding` |
-| 先把方法和 proof obligation 设计清楚 | `syssec-method-design` |
-| 没源码，要啃 binary 或 firmware | `syssec-reverse` |
-| 有源码，先看静态逻辑 | `syssec-static-analysis` |
-| 需要 runtime 证据 | `syssec-dynamic-analysis` |
-| 需要自动输入探索 | `syssec-fuzzing` |
-| 需要验证 exploitability | `syssec-exploit` |
-| 需要实现 mitigation / defense | `syssec-defense-prototype` |
+| `syssec-target-understanding` | Understands the target system. Maps architecture, trust boundaries, attack surface, and observation points. |
+| `syssec-method-design` | Method design. Converges the threat model, target understanding, and expected claims into an implementable and evaluable method. |
+| `syssec-reverse` | Reverse engineering. Recovers structure and critical behavior from binaries, firmware, or closed components. |
+| `syssec-static-analysis` | Static analysis. Inspects source code, configuration, call paths, boundary checks, and privilege transitions. |
+| `syssec-dynamic-analysis` | Dynamic analysis. Uses traces, instrumentation, and debuggers to observe real runtime behavior. |
+| `syssec-fuzzing` | Fuzzing. Designs harnesses, oracles, seeds, and triage paths. |
+| `syssec-exploit` | PoC and exploit validation. Determines whether a suspected issue is actually reachable, triggerable, and impactful. |
+| `syssec-defense-prototype` | Defense prototyping. Implements or constrains a protection mechanism that can later be validated. |
 
-**syssec-validation →**
+### 📏 syssec-validation - validation and evaluation hub
 
-| 意图信号 | Worker |
+| Worker | Purpose |
 |:---|:---|
-| 复现别人的 paper 或 artifact | `syssec-reproduction` |
-| 先把实验矩阵设计清楚 | `syssec-experiment-design` |
-| 开始跑实验和看结果 | `syssec-evaluation` |
-| 关注 overhead 和 scalability | `syssec-performance` |
-| 关注 OS / arch / deployment support | `syssec-compatibility` |
-| 关注 variance 和显著性 | `syssec-statistics` |
-| 关注 overclaim 和 validity | `syssec-threats-validity` |
+| `syssec-reproduction` | Reproduces prior work. Records exact or partial reproduction status and reasons for deviations. |
+| `syssec-experiment-design` | Experiment design. Defines variables, metrics, baselines, trial plans, and output paths. |
+| `syssec-evaluation` | Runs evaluations. Executes the experiment matrix, aggregates raw results, and records anomalies and failures. |
+| `syssec-performance` | Performance evaluation. Quantifies overhead, tail behavior, resource cost, and scalability. |
+| `syssec-compatibility` | Compatibility evaluation. Checks adaptation boundaries across operating systems, versions, architectures, and deployment modes. |
+| `syssec-statistics` | Statistical interpretation. Handles variance, significance, and underpowered comparisons. |
+| `syssec-threats-validity` | Threats to validity. Identifies internal, external, construct, and measurement risks. |
 
-**syssec-publication →**
+### 📝 syssec-publication - writing and disclosure hub
 
-| 意图信号 | Worker |
+| Worker | Purpose |
 |:---|:---|
-| 先把 claim 收住 | `syssec-synthesis` |
-| 开始写正文 | `syssec-write` |
-| 整理 related work | `syssec-related-work` |
-| 规划图和表 | `syssec-figures` |
-| 准备投稿包 | `syssec-submission` |
-| 回 reviewer | `syssec-rebuttal` |
-| 管披露边界 | `syssec-disclosure` |
-| 准备 artifact eval | `syssec-artifact-eval` |
-| 处理 camera-ready 和后续维护 | `syssec-post-submission` |
+| `syssec-synthesis` | Claim convergence. Organizes findings into a claim-evidence map with evidence levels. |
+| `syssec-write` | Paper writing. Structures sections around validated claims, not wishful storytelling. |
+| `syssec-related-work` | Related work writing. Turns the survey into technical positioning instead of a citation dump. |
+| `syssec-figures` | Figure planning. Ensures every figure or table serves a specific claim. |
+| `syssec-submission` | Submission checks. Verifies the completeness of the paper, appendix, artifact, ethics, and formatting. |
+| `syssec-rebuttal` | Rebuttal orchestration. Maps reviewer comments to evidence, added experiments, and revision plans. |
+| `syssec-disclosure` | Responsible disclosure. Controls publication boundaries, affected versions, and communication timing. |
+| `syssec-artifact-eval` | Artifact evaluation. Prepares a package and replay checklist that outside reviewers can rerun. |
+| `syssec-post-submission` | Post-submission maintenance. Handles camera-ready, artifact follow-up, release hygiene, and ongoing maintenance commitments. |
 
-### 预设工作流
+---
 
-SysSec Research Skills 内置 7 个预设工作流，覆盖系统安全科研中最常见
-的主路径：
+## Routing Map
 
-| # | 工作流 | 适用场景 | 执行链路 |
+### Routing logic
+
+#### Primary routing (Hub -> Supervisor)
+
+| User intent | Route to |
+|:---|:---|
+| The problem is still vague, or you need a threat model, literature review, baseline list, or artifact inventory | `syssec-foundation` |
+| You need system architecture understanding, reverse engineering, static analysis, dynamic analysis, fuzzing, PoC validation, or a defense prototype | `syssec-investigation` |
+| You need reproduction, experiment design, evaluation, performance analysis, compatibility checks, statistics, or threats to validity | `syssec-validation` |
+| You need claim convergence, paper writing, figures, submission prep, rebuttal, disclosure, or artifact evaluation | `syssec-publication` |
+
+#### Secondary routing (Supervisor -> Worker)
+
+**syssec-foundation ->**
+
+| Intent signal | Worker |
+|:---|:---|
+| The request is scattered and the goal or deliverable is unclear | `syssec-intake` |
+| Research question, threat model, assumptions, or boundaries | `syssec-scope` |
+| Related work, gaps, or neighboring papers | `syssec-survey` |
+| Baseline selection or fair comparison | `syssec-baseline` |
+| Code / binary / dataset / trace / artifact inventory | `syssec-artifact-intake` |
+
+**syssec-investigation ->**
+
+| Intent signal | Worker |
+|:---|:---|
+| First understand the system architecture and attack surface | `syssec-target-understanding` |
+| First clarify the method and proof obligations | `syssec-method-design` |
+| No source code, need to study binaries or firmware | `syssec-reverse` |
+| Source code is available, start from static logic | `syssec-static-analysis` |
+| Need runtime evidence | `syssec-dynamic-analysis` |
+| Need automated input exploration | `syssec-fuzzing` |
+| Need to validate exploitability | `syssec-exploit` |
+| Need to implement a mitigation or defense | `syssec-defense-prototype` |
+
+**syssec-validation ->**
+
+| Intent signal | Worker |
+|:---|:---|
+| Reproduce someone else's paper or artifact | `syssec-reproduction` |
+| First design the experiment matrix | `syssec-experiment-design` |
+| Start running experiments and reading results | `syssec-evaluation` |
+| Focus on overhead and scalability | `syssec-performance` |
+| Focus on OS / architecture / deployment support | `syssec-compatibility` |
+| Focus on variance and significance | `syssec-statistics` |
+| Focus on overclaim and validity | `syssec-threats-validity` |
+
+**syssec-publication ->**
+
+| Intent signal | Worker |
+|:---|:---|
+| First narrow the claims | `syssec-synthesis` |
+| Start writing the paper | `syssec-write` |
+| Organize the related work section | `syssec-related-work` |
+| Plan figures and tables | `syssec-figures` |
+| Prepare the submission package | `syssec-submission` |
+| Respond to reviewers | `syssec-rebuttal` |
+| Manage disclosure boundaries | `syssec-disclosure` |
+| Prepare artifact evaluation | `syssec-artifact-eval` |
+| Handle camera-ready and follow-up maintenance | `syssec-post-submission` |
+
+### Prebuilt workflows
+
+SysSec Research Skills ships with 7 prebuilt workflows that cover the most
+common primary paths in systems security research:
+
+| # | Workflow | Typical use case | Execution path |
 |:--|:---|:---|:---|
-| 1 | **idea-to-paper** | 从研究想法一路做到投稿 | intake → scope → survey → baseline → artifact-intake → method-design → prototype → evaluation → synthesis → writing → submission |
-| 2 | **paper-reproduction** | 手上有论文，目标是复现和偏差审计 | intake → survey → artifact-intake → reproduction → experiment-design → evaluation → threats-validity → writing |
-| 3 | **literature-review** | 做某个方向的系统安全文献综述、related work map、综述型写作 | intake → scope → survey → baseline → synthesis → related-work → write → submission |
-| 4 | **system-attack-study** | 对一个系统做攻击面分析、PoC、评估、写作 | intake → scope → target-understanding → reverse/static → dynamic/fuzzing → exploit → evaluation → synthesis → writing → disclosure |
-| 5 | **defense-design-study** | 设计并实现一个 defense，再评估安全性与代价 | intake → scope → survey → baseline → target-understanding → method-design → defense-prototype → evaluation → performance → compatibility → threats-validity → writing |
-| 6 | **measurement-study** | 做系统安全测量、分类、趋势或对比研究 | intake → scope → survey → baseline → artifact-intake → experiment-design → evaluation → statistics → synthesis → writing |
-| 7 | **vuln-to-disclosure** | 从发现问题一路走到验证、披露与发表边界控制 | intake → scope → target-understanding → static/dynamic → reproduction → exploit/defense → evaluation → disclosure → writing |
+| 1 | **idea-to-paper** | Take a research idea all the way to submission | intake -> scope -> survey -> baseline -> artifact-intake -> method-design -> prototype -> evaluation -> synthesis -> writing -> submission |
+| 2 | **paper-reproduction** | You already have a paper and want reproduction plus deviation auditing | intake -> survey -> artifact-intake -> reproduction -> experiment-design -> evaluation -> threats-validity -> writing |
+| 3 | **literature-review** | Build a systems security literature review, related-work map, or survey-style write-up for a topic | intake -> scope -> survey -> baseline -> synthesis -> related-work -> write -> submission |
+| 4 | **system-attack-study** | Analyze a system's attack surface, build a PoC, evaluate it, and write it up | intake -> scope -> target-understanding -> reverse/static -> dynamic/fuzzing -> exploit -> evaluation -> synthesis -> writing -> disclosure |
+| 5 | **defense-design-study** | Design and implement a defense, then evaluate both its security and cost | intake -> scope -> survey -> baseline -> target-understanding -> method-design -> defense-prototype -> evaluation -> performance -> compatibility -> threats-validity -> writing |
+| 6 | **measurement-study** | Run a systems security measurement, taxonomy, trend, or comparative study | intake -> scope -> survey -> baseline -> artifact-intake -> experiment-design -> evaluation -> statistics -> synthesis -> writing |
+| 7 | **vuln-to-disclosure** | Move from issue discovery through validation, disclosure, and publication-boundary control | intake -> scope -> target-understanding -> static/dynamic -> reproduction -> exploit/defense -> evaluation -> disclosure -> writing |
 
-### 常见路径
+### Common paths
 
 ```text
-只有一个模糊想法
-→ syssec-research
-→ syssec-foundation
-→ intake → scope → survey
+You only have a vague idea
+-> syssec-research
+-> syssec-foundation
+-> intake -> scope -> survey
 
-有论文，想复现
-→ syssec-research
-→ syssec-validation
-→ reproduction → experiment-design → evaluation
+You have a paper and want to reproduce it
+-> syssec-research
+-> syssec-validation
+-> reproduction -> experiment-design -> evaluation
 
-怀疑系统有洞，想验证
-→ syssec-research
-→ syssec-investigation
-→ target-understanding → static/dynamic → exploit
-→ syssec-validation → evaluation
-→ syssec-publication → disclosure
+You suspect a system has a vulnerability and want to verify it
+-> syssec-research
+-> syssec-investigation
+-> target-understanding -> static/dynamic -> exploit
+-> syssec-validation -> evaluation
+-> syssec-publication -> disclosure
 
-结果已经有了，准备写 paper
-→ syssec-research
-→ syssec-publication
-→ synthesis → figures → write → submission
+You already have results and want to write the paper
+-> syssec-research
+-> syssec-publication
+-> synthesis -> figures -> write -> submission
 ```
 
-### 跨组协同
+### Cross-group collaboration
 
-模块之间默认按研究阶段协同，而不是各写各的：
+By default, modules collaborate by research stage rather than writing in
+parallel without coordination:
 
-- `foundation` 把 threat model、baseline、artifact inventory 准备好，再
-  交给 `investigation`
-- `investigation` 只负责建立技术事实和原型，不直接替 `validation` 宣布
-  “已经证明”
-- `validation` 把结果、代价、适配边界、validity 风险梳理清楚，再交给
-  `publication`
-- `publication` 只能消费已建立的证据，不能为了一篇好看的 paper 倒推结论
+- `foundation` prepares the threat model, baselines, and artifact inventory
+  before handing work to `investigation`
+- `investigation` is responsible for technical facts and prototypes only, and
+  does not declare something "proven" on behalf of `validation`
+- `validation` organizes results, costs, deployment boundaries, and validity
+  risks before handing them to `publication`
+- `publication` can only consume established evidence and cannot reverse-engineer
+  conclusions for the sake of a nicer paper
 
 ---
 
-## 研究状态产物
+## Research State Artifacts
 
-这套系统默认维护一组长期研究产物，作为跨阶段的数据总线：
+This system maintains a default set of long-running research artifacts that act
+as a data bus across stages:
 
-| 产物 | 作用 |
+| Artifact | Purpose |
 |:---|:---|
-| `research-brief.md` | 记录研究目标、study type、deliverable、约束 |
-| `questions-and-hypotheses.md` | 记录研究问题、假设、成功标准 |
-| `threat-model.md` | 记录 adversary、资产、边界、假设、non-goals |
-| `related-work-map.md` | 记录相关工作分组、比较维度、gap |
-| `baseline-matrix.md` | 记录必须比较的 baseline 和比较公平性 |
-| `artifact-inventory.md` | 记录代码、binary、dataset、trace、依赖、缺失项 |
-| `reproduction-log.md` | 记录复现步骤、环境、偏差和未验证 claim |
-| `system-notes.md` | 记录架构、组件、信任边界、攻击面 |
-| `attack-surface-map.md` | 记录入口、边界、关键接口、可观察点 |
-| `method-design.md` | 记录方法机制、proof obligation、实验绑定关系 |
-| `prototype-notes.md` | 记录 PoC 或 defense prototype 的实现边界与失败尝试 |
-| `experiment-matrix.md` | 记录变量、指标、baseline、trial 设计 |
-| `findings-log.md` | 记录观察、证据等级、后续动作 |
-| `results-summary.md` | 汇总实验结果和异常 |
-| `performance-notes.md` | 记录 overhead、tail behavior、扩展性和资源成本 |
-| `compatibility-notes.md` | 记录平台支持、部署边界和不兼容点 |
-| `validity-notes.md` | 记录 internal / external / construct / measurement 风险 |
-| `claim-evidence-map.md` | 把 claim 和证据源一一绑定 |
-| `paper-outline.md` | 组织论文结构和章节骨架 |
-| `figures-plan.md` | 记录图表、表格、caption 和所服务的 claim |
-| `submission-checklist.md` | 检查稿件、artifact、伦理和格式 |
-| `rebuttal-notes.md` | 记录 reviewer 问题、响应策略和补实验计划 |
-| `disclosure-log.md` | 记录披露边界、版本、沟通时序 |
-| `post-submission-notes.md` | 记录 camera-ready、artifact follow-up 和维护动作 |
+| `research-brief.md` | Records research goals, study type, deliverables, and constraints |
+| `questions-and-hypotheses.md` | Records research questions, hypotheses, and success criteria |
+| `threat-model.md` | Records the adversary, assets, boundaries, assumptions, and non-goals |
+| `related-work-map.md` | Records related-work groups, comparison dimensions, and gaps |
+| `baseline-matrix.md` | Records required baselines and the fairness rationale for each comparison |
+| `artifact-inventory.md` | Records code, binaries, datasets, traces, dependencies, and missing pieces |
+| `reproduction-log.md` | Records reproduction steps, environments, deviations, and unverified claims |
+| `system-notes.md` | Records architecture, components, trust boundaries, and attack surface |
+| `attack-surface-map.md` | Records entry points, boundaries, critical interfaces, and observable points |
+| `method-design.md` | Records the method, proof obligations, and experiment bindings |
+| `prototype-notes.md` | Records implementation boundaries and failed attempts for PoCs or defense prototypes |
+| `experiment-matrix.md` | Records variables, metrics, baselines, and trial design |
+| `findings-log.md` | Records observations, evidence levels, and next actions |
+| `results-summary.md` | Summarizes experimental results and anomalies |
+| `performance-notes.md` | Records overhead, tail behavior, scalability, and resource cost |
+| `compatibility-notes.md` | Records platform support, deployment boundaries, and incompatibilities |
+| `validity-notes.md` | Records internal, external, construct, and measurement risks |
+| `claim-evidence-map.md` | Binds each claim to its evidence source |
+| `paper-outline.md` | Organizes the paper structure and section skeleton |
+| `figures-plan.md` | Records figures, tables, captions, and the claims they support |
+| `submission-checklist.md` | Checks the paper, artifact, ethics, and formatting |
+| `rebuttal-notes.md` | Records reviewer questions, response strategy, and added experiment plans |
+| `disclosure-log.md` | Records disclosure boundaries, versions, and communication timing |
+| `post-submission-notes.md` | Records camera-ready work, artifact follow-up, and maintenance actions |
 
-对应模板放在 `templates/`。
+The corresponding templates are in `templates/`.
 
 ---
 
-## 协议层
+## Protocol Layer
 
-所有 skill 在真正干活前，都要先加载 `_system/` 协议层：
+Before doing any real work, every skill loads the protocol layer under
+`_system/`:
 
-| 文件 | 作用 |
+| File | Purpose |
 |:---|:---|
-| `preamble.md` | 先判当前研究阶段，再决定动作 |
-| `evidence-rules.md` | 区分 verified、derived、inference、hypothesis、external claim |
-| `reproducibility-rules.md` | 强制记录环境、命令、输入、输出、版本 |
-| `ethics-and-disclosure.md` | 控制 live target、敏感数据、披露边界 |
-| `degradation-rules.md` | 没有源码、artifact、权限、硬件时如何降级推进 |
-| `output-format.md` | 强制把已证实和待验证分开写 |
-| `handoff-contract.md` | 统一 DONE / NEEDS_CONTEXT / BLOCKED / OUT_OF_SCOPE 回交 |
-| `workflow-catalog.md` | 预设工作流目录 |
-| `skill-directory.md` | 全部 skill 的职责映射 |
+| `preamble.md` | Determines the current research stage before deciding actions |
+| `evidence-rules.md` | Distinguishes verified, derived, inference, hypothesis, and external claim |
+| `reproducibility-rules.md` | Forces the recording of environments, commands, inputs, outputs, and versions |
+| `ethics-and-disclosure.md` | Controls live targets, sensitive data, and disclosure boundaries |
+| `degradation-rules.md` | Explains how to degrade gracefully when source, artifact, privileges, or hardware are unavailable |
+| `output-format.md` | Forces confirmed facts and still-unverified items to be written separately |
+| `handoff-contract.md` | Standardizes `DONE`, `NEEDS_CONTEXT`, `BLOCKED`, and `OUT_OF_SCOPE` handoff results |
+| `workflow-catalog.md` | Catalog of prebuilt workflows |
+| `skill-directory.md` | Responsibility map for all skills |
 
 ---
 
-## 参考层与示例
+## Reference Layer and Examples
 
-除了协议层，这套系统还补了两层辅助内容：
+Beyond the protocol layer, this system includes two supporting layers:
 
-- `references/`
-  放 Hub、Supervisors 和关键阶段的工作参考与 checklist
-- `examples/`
-  放常见研究路径的最小示例，帮助快速进入正确工作流
+- `references/` contains work references and checklists for the Hub,
+  Supervisors, and key stages
+- `examples/` contains minimal examples for common research paths so users can
+  enter the right workflow faster
 
 ---
 
-## 这套系统不预设什么
+## What This System Does Not Preset
 
-- 不预设你一定有源码
-- 不预设你一定有 artifact 包
-- 不预设论文 claim 一定能复现
-- 不预设你一定能碰真实目标
-- 不预设你只能做 exploit 研究，防御、测量、复现、写作都在覆盖范围
-- 不预设固定会议、固定工具链、固定实验室流程
+- It does not assume you have source code
+- It does not assume you have an artifact package
+- It does not assume paper claims will reproduce
+- It does not assume you can touch a live target
+- It does not assume systems security research must be exploit-only; defense,
+  measurement, reproduction, and writing are all covered
+- It does not assume a fixed venue, toolchain, or lab workflow
 
-它唯一预设的是：系统安全科研必须把证据、边界、复现性和披露纪律说清楚。
+The only thing it assumes is that systems security research must make its
+evidence, boundaries, reproducibility, and disclosure discipline explicit.
