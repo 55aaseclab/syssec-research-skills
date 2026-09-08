@@ -1,6 +1,8 @@
 domain SysSecResearch version "0.1.3"
 title "Systems Security Research"
 description "A full-lifecycle systems security research workflow pack with explicit evidence, authorization, reproducibility, and publication gates."
+category "Research"
+accent "green"
 
 port IntakeResearch version "1.0.0" {
   in {
